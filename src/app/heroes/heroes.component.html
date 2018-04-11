@@ -1,10 +1,17 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-  </li>
-</ul>
+<div class="c-heroes">
+  <div class="p-wrapper">
+    <h2>Hero List</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes">
+        <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
+      </li>
+    </ul>
+    <div class="p-pager">
+      <button class="p-btn" *ngIf="offset > 0" (click)="prevHeroes()">Prev</button>
+      <button class="p-btn" (click)="nextHeroes()">Next</button>
+    </div>
+  </div>
+</div>
+
 
 

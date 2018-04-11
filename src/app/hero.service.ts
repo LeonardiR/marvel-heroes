@@ -19,15 +19,15 @@ export class HeroService {
   private ts = new Date().getTime();
   private hash = md5.appendStr(this.ts + this.privateApiKey + this.apiKey).end();
 
-  getHeroes (): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl + '/characters?ts=' + this.ts + '&apikey=' + this.apiKey + '&hash=' + this.hash)
+  getHeroes (offset: number): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.heroesUrl}/characters?offset=${offset}&ts=${this.ts}&apikey=${this.apiKey}&hash=${this.hash}`)
       .pipe(
         catchError(this.handleError('getHeroes', []))
       );
   }
 
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/characters/${id}?ts=${this.ts}&apikey=${this.apiKey}&hash=${this.hash}`;
+    const url = `${this.heroesUrl}/characters/${id}?offset=100&ts=${this.ts}&apikey=${this.apiKey}&hash=${this.hash}`;
     return this.http.get<Hero>(url).pipe(
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );

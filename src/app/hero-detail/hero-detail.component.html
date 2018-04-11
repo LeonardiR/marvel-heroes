@@ -1,8 +1,15 @@
-<div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><img src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}"></div>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div><span>Name: </span>{{hero.name}}</div>
-  <div><p>{{hero.description}}</p></div>
-  <button (click)="goBack()">go back</button>
+<div *ngIf="hero" class="p-content-block c-hero">
+  <div class="p-wrapper">
+    <div class="c-card">
+      <div class="c-card__header" [ngStyle]="{'background-image': 'url(' + hero.data.results[0].thumbnail.path + '.' + hero.data.results[0].thumbnail.extension + ')'}"></div>
+      <div class="c-card__body">
+        <h2>{{ hero.data.results[0].name | uppercase }}</h2>
+        <div><span>id: </span>{{hero.data.results[0].id}}</div>
+        <div><p>{{hero.data.results[0].description}}</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-wrapper u-align-content--center">
+  <button class="p-btn" (click)="goBack()">BACK</button>
 </div>

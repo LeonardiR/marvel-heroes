@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { TopHeroesComponent } from './top-heroes/top-heroes.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    DashboardComponent,
+    TopHeroesComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

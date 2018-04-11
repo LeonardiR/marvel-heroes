@@ -6,19 +6,30 @@ import { HeroService } from '../hero.service';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero [];
-
-  constructor(private heroService: HeroService) {}
+  heroes: Hero[];
+  offset = 0;
+  constructor(private heroService: HeroService) {
+  }
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes()
+    this.heroService.getHeroes(this.offset)
       .subscribe(heroes => this.heroes = heroes.data.results);
+  }
+
+  nextHeroes(): void {
+    this.offset = this.offset + 20;
+    this.getHeroes();
+  }
+
+  prevHeroes(): void {
+    this.offset = this.offset - 20;
+    this.getHeroes();
   }
 }
