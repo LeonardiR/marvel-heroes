@@ -1,0 +1,28 @@
+.c-header{
+  position: relative;
+
+  width: 100%;
+  background-color: black;
+  height: auto;
+  top: 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 105px;
+
+  .c-header__logo{
+    width: 200px;
+    position: relative;
+
+    img{
+      width: 100%;
+    }
+  }
+
+  nav{
+    .p-link{
+      margin-left: 40px;
+    }
+  }
+}
