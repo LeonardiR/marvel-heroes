@@ -1,9 +1,9 @@
 export class Hero {
   data: {
-    offset: number;
-    limit: number;
-    total: number;
-    count: number;
+    offset: number,
+    limit: number,
+    total: number,
+    count: number,
     results: [
       {
         id: number;

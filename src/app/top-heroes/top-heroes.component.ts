@@ -8,8 +8,7 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './top-heroes.component.scss' ]
 })
 export class TopHeroesComponent implements OnInit {
-  heroes: Hero[];
-
+  heroes: Hero;
   constructor(private heroService: HeroService) {}
 
   ngOnInit() {
@@ -17,8 +16,9 @@ export class TopHeroesComponent implements OnInit {
     }
 
   getHeroes(): void {
-    const offset = 100;
-    this.heroService.getHeroes(offset)
-      .subscribe(heroes => this.heroes = heroes.data.results.slice(1, 7));
+    const offset = 0;
+    const modifiedSince = 'modifiedSince=10%2F10%2F2016';
+    this.heroService.getHeroes(offset, modifiedSince)
+      .subscribe(heroes => this.heroes = heroes);
   }
 }

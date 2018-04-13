@@ -1,8 +1,8 @@
 <div class="c-heroes">
   <div class="p-wrapper">
-    <h2>Hero List</h2>
+    <h2>Hero List with a total of: <span class="u-highlight">{{heroes.data.total}} results</span></h2>
     <ul class="heroes">
-      <li *ngFor="let hero of heroes">
+      <li *ngFor="let hero of heroes.data.results">
         <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
       </li>
     </ul>

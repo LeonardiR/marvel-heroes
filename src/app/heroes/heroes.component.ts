@@ -9,19 +9,19 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+  heroes: Hero;
   offset = 0;
-  constructor(private heroService: HeroService) {
-  }
+  modifiedSince = '';
+  constructor(private heroService: HeroService) {}
 
   ngOnInit() {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes(this.offset)
-      .subscribe(heroes => this.heroes = heroes.data.results);
-  }
+    this.heroService.getHeroes(this.offset, this.modifiedSince)
+      .subscribe(heroes => this.heroes = heroes);
+    }
 
   nextHeroes(): void {
     this.offset = this.offset + 20;
