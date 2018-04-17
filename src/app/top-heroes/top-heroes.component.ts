@@ -17,7 +17,7 @@ export class TopHeroesComponent implements OnInit {
 
   getHeroes(): void {
     const offset = 0;
-    const modifiedSince = 'modifiedSince=10%2F10%2F2016';
+    const modifiedSince = 'modifiedSince=10%2F10%2F2015';
     this.heroService.getHeroes(offset, modifiedSince)
       .subscribe(heroes => this.heroes = heroes);
   }

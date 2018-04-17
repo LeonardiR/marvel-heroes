@@ -5,7 +5,7 @@ import {TopHeroesComponent} from './top-heroes/top-heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 const routes: Routes = [
-  { path: 'hero-list', component: HeroesComponent },
+  { path: 'hero-list/:offset', component: HeroesComponent },
   { path: 'top-heroes', component: TopHeroesComponent },
   { path: 'hero/:id', component: HeroDetailComponent },
   { path: '', redirectTo: '/top-heroes', pathMatch: 'full' },

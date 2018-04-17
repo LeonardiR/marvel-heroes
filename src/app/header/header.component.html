@@ -1,7 +1,9 @@
-<div class="c-header">
-  <div class="c-header__logo"><img src="../assets/images/marvel-logo.png"></div>
+<div *ngIf="heroes">
+  <div class="c-header">
+    <div class="c-header__logo"><img src="../assets/images/marvel-logo.png"></div>
     <nav>
       <a class="p-link" routerLink="/top-heroes" >TOP</a>
-      <a class="p-link" routerLink="/hero-list">HEROES</a>
+      <a class="p-link" routerLink="/hero-list/{{heroes.data.offset}}">HEROES</a>
     </nav>
+  </div>
 </div>

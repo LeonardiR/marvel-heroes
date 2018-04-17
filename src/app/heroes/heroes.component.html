@@ -1,14 +1,15 @@
-<div class="c-heroes">
+<div class="c-heroes" *ngIf="heroes">
   <div class="p-wrapper">
-    <h2>Hero List with a total of: <span class="u-highlight">{{heroes.data.total}} results</span></h2>
+    <h2>Hero List with a total of: <span class="u-highlight">{{heroes.data.total}} results and offset {{heroes.data.offset}}</span></h2>
     <ul class="heroes">
       <li *ngFor="let hero of heroes.data.results">
         <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
       </li>
     </ul>
-    <div class="p-pager">
-      <button class="p-btn" *ngIf="offset > 0" (click)="prevHeroes()">Prev</button>
-      <button class="p-btn" (click)="nextHeroes()">Next</button>
+    <div *ngIf="numbers" class="p-pager">
+      <button class="p-btn"  *ngIf="heroes.data.offset > 0" (click)="prevHeroes(heroes.data.offset)">Prev</button>
+      <a class="p-link" style="color: #f0141e" *ngFor="let number of numbers">{{number}}</a>
+      <button class="p-btn" *ngIf="heroes.data.count == 20" (click)="nextHeroes(heroes.data.offset)">Next</button>
     </div>
   </div>
 </div>
