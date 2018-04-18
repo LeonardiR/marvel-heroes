@@ -67,28 +67,13 @@ a {
 
 }
 
-.p-pager{
-  padding: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  .p-link{
-    color: black;
-
-    &:hover{
-      color: $brand-color--primary;
-    }
-  }
-}
-
 .p-btn{
   background-color: $brand-color--primary;
   padding: 15px 30px;
   color: white;
-  border: none;
   border-radius: unset;
   font-size: 16px;
+  border: 1px solid $brand-color--primary;
 
   &:hover{
     background-color: white;
@@ -116,5 +101,20 @@ a {
   }
   .c-card__body{
     padding: 30px;
+  }
+}
+
+.c-pagination{
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .p-link{
+    color: black;
+
+    &:hover{
+      color: $brand-color--primary;
+    }
   }
 }
