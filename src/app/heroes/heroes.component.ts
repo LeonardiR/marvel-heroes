@@ -13,8 +13,10 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit, DoCheck {
   heroes: Hero;
-  numbers = [];
+  paginationLinks = [];
+  numberOfLinks: number;
   modifiedSince = '';
+  resultsPerPages = 20;
   offset = +this.route.snapshot.paramMap.get('offset');
   constructor(private route: ActivatedRoute,
               private heroService: HeroService,
@@ -25,7 +27,7 @@ export class HeroesComponent implements OnInit, DoCheck {
     this.getHeroes();
     }
   ngDoCheck() {
-      this.generatePagerLinks();
+      this.generatePaginationLinks();
   }
     getHeroes(): void {
     this.heroService.getHeroes(this.offset, this.modifiedSince)
@@ -37,19 +39,19 @@ export class HeroesComponent implements OnInit, DoCheck {
     }
 
   nextHeroes(offset: number): void {
-    this.heroes.data.offset = offset + 20;
+    this.heroes.data.offset = offset + this.resultsPerPages;
     this.getHeroesOffset(this.heroes.data.offset);
     this.router.navigate([`/hero-list/${this.heroes.data.offset}`]);
   }
 
   prevHeroes(offset: number): void {
-    this.heroes.data.offset = offset - 20;
+    this.heroes.data.offset = offset - this.resultsPerPages;
     this.getHeroesOffset(this.heroes.data.offset);
     this.router.navigate([`/hero-list/${this.heroes.data.offset}`]);
     }
-    generatePagerLinks(): void {
-      this.heroes.data.total = this.heroes.data.total / 20;
-      this.heroes.data.total = Math.round(this.heroes.data.total);
-      this.numbers = Array(this.heroes.data.total).fill(0).map((x, i) => i);
+    generatePaginationLinks(): void {
+      this.numberOfLinks = this.heroes.data.total / this.resultsPerPages;
+      this.numberOfLinks = Math.round(this.numberOfLinks);
+      this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
     }
 }

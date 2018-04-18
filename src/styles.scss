@@ -69,6 +69,17 @@ a {
 
 .p-pager{
   padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .p-link{
+    color: black;
+
+    &:hover{
+      color: $brand-color--primary;
+    }
+  }
 }
 
 .p-btn{
