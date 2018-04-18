@@ -2,7 +2,7 @@
   <div class="p-wrapper">
     <h2>Top Heroes</h2>
     <div class="p-grid">
-      <a *ngFor="let hero of heroes.data.results.slice(1, 7)" class="p-grid__item" routerLink="/hero/{{hero.id}}">
+      <a *ngFor="let hero of heroes.data.results | slice:0:6" class="p-grid__item" routerLink="/hero/{{hero.id}}">
         <div class="module hero" [ngStyle]="{'background-image': 'url(' + hero.thumbnail.path + '.' + hero.thumbnail.extension + ')'}">
           <div class="module--hover">
             <h4>{{hero.name}}</h4>

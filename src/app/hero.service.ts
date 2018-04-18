@@ -21,7 +21,8 @@ export class HeroService {
 
   getHeroes (offset: number, modifiedSince: string): Observable<Hero> {
     return this.http.get<Hero>
-    (`${this.heroesUrl}/characters?${modifiedSince}&offset=${offset}&ts=${this.ts}&apikey=${this.apiKey}&hash=${this.hash}`);
+    (`${this.heroesUrl}/characters?${modifiedSince}&offset=${offset}&ts=${this.ts}&apikey=${this.apiKey}&hash=${this.hash}`).pipe(
+      catchError(this.handleError<Hero>()));
   }
 
   getHero(id: number): Observable<Hero> {
@@ -33,8 +34,7 @@ export class HeroService {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      // Let the app keep running by returning an empty result.
+      console.error(error);
       return of(result as T);
     };
   }
