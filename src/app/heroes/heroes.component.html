@@ -8,7 +8,7 @@
     </ul>
     <div *ngIf="paginationLinks" class="c-pagination">
       <button class="p-btn"  *ngIf="heroes.data.offset > 0" (click)="prevHeroes(heroes.data.offset)">Prev</button>
-      <a class="p-link" *ngFor="let link of paginationLinks | slice:0:20" routerLink="/hero-list/{{link*resultsPerPages}}" (click)="getHeroesOffset(link*resultsPerPages)">{{link+1}}</a>
+      <a class="p-link" *ngFor="let link of paginationLinks" routerLink="/hero-list/{{link*resultsPerPages}}" (click)="getHeroesOffset(link*resultsPerPages)">{{link+1}}</a>
       <button class="p-btn" *ngIf="heroes.data.count == resultsPerPages" (click)="nextHeroes(heroes.data.offset)">Next</button>
     </div>
   </div>
