@@ -6,13 +6,6 @@
         <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
       </li>
     </ul>
-    <div *ngIf="paginationLinks" class="c-pagination">
-      <button class="p-btn"  *ngIf="heroes.data.offset > 0" (click)="prevHeroes(heroes.data.offset)">Prev</button>
-      <a class="p-link" *ngFor="let link of paginationLinks" routerLink="/hero-list/{{link*resultsPerPages}}" (click)="getHeroesOffset(link*resultsPerPages)">{{link+1}}</a>
-      <button class="p-btn" *ngIf="heroes.data.count == resultsPerPages" (click)="nextHeroes(heroes.data.offset)">Next</button>
-    </div>
+    <app-pagination (goNext)="nextHeroes(heroes.data.offset)" (goPrev)="prevHeroes(heroes.data.offset)" [heroes]="heroes" [resultsPerPages]="heroes.data.total"></app-pagination>
   </div>
 </div>
-
-
-

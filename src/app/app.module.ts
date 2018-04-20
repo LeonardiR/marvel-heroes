@@ -11,6 +11,7 @@ import { HeroService } from './hero.service';
 import { AppRoutingModule } from './app-routing.module';
 import { TopHeroesComponent } from './top-heroes/top-heroes.component';
 import { HeaderComponent } from './header/header.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
     HeroDetailComponent,
     TopHeroesComponent,
     HeaderComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
