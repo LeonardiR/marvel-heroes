@@ -1,7 +1,6 @@
 import {Component, DoCheck, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Hero} from '../hero';
-import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-pagination',
@@ -13,11 +12,11 @@ export class PaginationComponent implements OnInit, DoCheck {
   @Input() resultsPerPages: number;
   @Output() goPrev = new EventEmitter<boolean>();
   @Output() goNext = new EventEmitter<boolean>();
+  @Output() goResult = new EventEmitter<boolean>();
+  @Output() currentOffset = new EventEmitter<number>();
   paginationLinks = [];
   numberOfLinks: number;
-  offset = +this.route.snapshot.paramMap.get('offset');
   constructor(private route: ActivatedRoute,
-              private heroService: HeroService,
               private router: Router) { }
 
   ngOnInit() {
@@ -25,7 +24,7 @@ export class PaginationComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.generatePaginationLinks();
-  }
+    }
 
   nextHeroes(): void {
     this.goNext.emit(true);
@@ -33,6 +32,10 @@ export class PaginationComponent implements OnInit, DoCheck {
 
   prevHeroes(): void {
     this.goPrev.emit(true);
+  }
+  goHeroes(currentOffset): void {
+    this.currentOffset.emit(currentOffset);
+    this.goResult.emit(true);
   }
   generatePaginationLinks(): void {
     this.numberOfLinks = this.heroes.data.total / this.resultsPerPages;

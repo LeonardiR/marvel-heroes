@@ -1,4 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import {Component, OnInit, DoCheck, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,7 +15,8 @@ export class HeroesComponent implements OnInit, DoCheck {
   heroes: Hero;
   modifiedSince = '';
   resultsPerPages = 20;
-  offset = +this.route.snapshot.paramMap.get('offset');
+  offset: number;
+  currentOffset: number;
   constructor(private route: ActivatedRoute,
               private heroService: HeroService,
               private router: Router,
@@ -25,9 +26,11 @@ export class HeroesComponent implements OnInit, DoCheck {
     this.getHeroes();
     }
   ngDoCheck() {
+    console.log(this.currentOffset);
     }
 
   getHeroes(): void {
+    this.offset = +this.route.snapshot.paramMap.get('offset');
     this.heroService.getHeroes(this.offset, this.modifiedSince)
       .subscribe(heroes => this.heroes = heroes);
   }
@@ -47,6 +50,11 @@ export class HeroesComponent implements OnInit, DoCheck {
     this.heroes.data.offset = offset - this.resultsPerPages;
     this.getHeroesOffset(this.heroes.data.offset);
     this.router.navigate([`/hero-list/${this.heroes.data.offset}`]);
+    }
+
+    getCurrentOffset(currentOffset): void {
+    this.currentOffset = currentOffset;
+    console.log(this.currentOffset);
     }
 
 }

@@ -1,7 +1,7 @@
 <div *ngIf="heroes">
   <div *ngIf="paginationLinks" class="c-pagination">
     <button class="p-btn"  *ngIf="heroes.data.offset > 0" (click)="prevHeroes()">Prev</button>
-    <a class="p-link" *ngFor="let link of paginationLinks" routerLink="/hero-list/{{link*resultsPerPages}}">{{link+1}}</a>
+    <a class="p-link" *ngFor="let link of paginationLinks" routerLink="/hero-list/{{link*resultsPerPages}}" (click)="goHeroes(link*resultsPerPages)">{{link+1}}</a>
     <button class="p-btn" *ngIf="heroes.data.count == resultsPerPages" (click)="nextHeroes()">Next</button>
   </div>
 </div>
