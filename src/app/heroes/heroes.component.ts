@@ -16,7 +16,6 @@ export class HeroesComponent implements OnInit, DoCheck {
   modifiedSince = '';
   resultsPerPages = 20;
   offset: number;
-  currentOffset: number;
   constructor(private route: ActivatedRoute,
               private heroService: HeroService,
               private router: Router,
@@ -26,7 +25,6 @@ export class HeroesComponent implements OnInit, DoCheck {
     this.getHeroes();
     }
   ngDoCheck() {
-    console.log(this.currentOffset);
     }
 
   getHeroes(): void {
@@ -50,11 +48,6 @@ export class HeroesComponent implements OnInit, DoCheck {
     this.heroes.data.offset = offset - this.resultsPerPages;
     this.getHeroesOffset(this.heroes.data.offset);
     this.router.navigate([`/hero-list/${this.heroes.data.offset}`]);
-    }
-
-    getCurrentOffset(currentOffset): void {
-    this.currentOffset = currentOffset;
-    console.log(this.currentOffset);
     }
 
 }
