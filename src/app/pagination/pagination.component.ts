@@ -1,5 +1,5 @@
 import {Component, DoCheck, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import {Hero} from '../hero';
 
 @Component({
@@ -8,6 +8,7 @@ import {Hero} from '../hero';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit, DoCheck {
+
   @ViewChild('pagerLink', {read: ElementRef}) pagerLink: ElementRef;
   @Input() heroes: Hero;
   @Input() resultsPerPages: number;
@@ -17,15 +18,15 @@ export class PaginationComponent implements OnInit, DoCheck {
   paginationLinks = [];
   numberOfLinks: number;
   currentLink: number;
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
+
+  constructor() {}
 
   ngOnInit() {
     this.generatePaginationLinks();
   }
 
   ngDoCheck() {
-    }
+  }
 
   nextHeroes(): void {
     this.goNext.emit(true);
@@ -43,5 +44,4 @@ export class PaginationComponent implements OnInit, DoCheck {
     this.numberOfLinks = Math.round(this.numberOfLinks);
     this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
     }
-
 }

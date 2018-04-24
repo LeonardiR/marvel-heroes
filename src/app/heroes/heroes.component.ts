@@ -1,6 +1,5 @@
-import {Component, OnInit, DoCheck, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import {Hero} from '../hero';
 import { HeroService } from '../hero.service';
@@ -11,20 +10,19 @@ import { HeroService } from '../hero.service';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
-export class HeroesComponent implements OnInit, DoCheck {
+
+export class HeroesComponent implements OnInit {
   heroes: Hero;
   modifiedSince = '';
   resultsPerPages = 20;
   offset: number;
   constructor(private route: ActivatedRoute,
               private heroService: HeroService,
-              private router: Router,
-              private location: Location) {}
+              private router: Router
+              ) {}
 
   ngOnInit() {
     this.getHeroes();
-    }
-  ngDoCheck() {
     }
 
   getHeroes(): void {
