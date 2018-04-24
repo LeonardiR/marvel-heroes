@@ -9,7 +9,6 @@ import {Hero} from '../hero';
 })
 export class PaginationComponent implements OnInit, DoCheck {
 
-  @ViewChild('pagerLink', {read: ElementRef}) pagerLink: ElementRef;
   @Input() heroes: Hero;
   @Input() resultsPerPages: number;
   @Output() goPrev = new EventEmitter<boolean>();
@@ -23,10 +22,10 @@ export class PaginationComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.generatePaginationLinks();
-  }
+    }
 
   ngDoCheck() {
-  }
+    }
 
   nextHeroes(): void {
     this.goNext.emit(true);

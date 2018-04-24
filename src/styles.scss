@@ -79,6 +79,10 @@ a {
     border: 1px solid lightgrey;
     cursor: pointer;
   }
+
+  &:disabled{
+    opacity: .4;
+  }
 }
 
 /* Components */
