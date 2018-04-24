@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import {Component, DoCheck, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 import {Hero} from '../hero';
 
