@@ -34,13 +34,28 @@ export class PaginationComponent implements OnInit, DoCheck {
   prevHeroes(): void {
     this.goPrev.emit(true);
   }
+
   goHeroes(currentOffset: number, currentLink: number): void {
     this.currentOffset.emit(currentOffset);
     this.currentLink = currentLink;
+    this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
+
+    if (this.currentLink < this.paginationLinks.length - this.resultsPerPages && this.currentLink > this.resultsPerPages / 2) {
+      this.paginationLinks = this.paginationLinks.slice
+      (this.currentLink - this.resultsPerPages / 2, this.currentLink + this.resultsPerPages / 2);
+
+    } else  if (this.currentLink >= this.paginationLinks.length - this.resultsPerPages ) {
+      this.paginationLinks = this.paginationLinks.slice(this.paginationLinks.length - this.resultsPerPages, this.paginationLinks.length);
+
+    } else {
+      this.paginationLinks = this.paginationLinks.slice(0, this.resultsPerPages);
     }
+  }
+
   generatePaginationLinks(): void {
     this.numberOfLinks = this.heroes.data.total / this.resultsPerPages;
     this.numberOfLinks = Math.round(this.numberOfLinks);
     this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
+    this.paginationLinks = this.paginationLinks.slice(0, this.resultsPerPages);
     }
 }
