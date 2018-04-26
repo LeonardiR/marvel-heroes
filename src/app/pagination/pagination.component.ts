@@ -10,7 +10,7 @@ import {Hero} from '../hero';
 })
 export class PaginationComponent implements OnInit {
 
-  @Input() heroes: Hero;
+  @Input() items: Hero;
   @Input() resultsPerPages: number;
   @Output() goPrev = new EventEmitter<boolean>();
   @Output() goNext = new EventEmitter<boolean>();
@@ -26,15 +26,15 @@ export class PaginationComponent implements OnInit {
     this.generatePaginationLinks();
     }
 
-  nextHeroes(): void {
+  nextPage(): void {
     this.goNext.emit(true);
     }
 
-  prevHeroes(): void {
+  prevPage(): void {
     this.goPrev.emit(true);
   }
 
-  goHeroes(currentOffset: number, currentLink: number): void {
+  goPage(currentOffset: number, currentLink: number): void {
     this.currentOffset.emit(currentOffset);
     this.currentLink = currentLink;
     this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
@@ -52,7 +52,7 @@ export class PaginationComponent implements OnInit {
   }
 
   generatePaginationLinks(): void {
-    this.numberOfLinks = this.heroes.data.total / this.resultsPerPages;
+    this.numberOfLinks = this.items.data.total / this.resultsPerPages;
     this.numberOfLinks = Math.round(this.numberOfLinks);
     this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
     this.paginationLinks = this.paginationLinks.slice(0, this.resultsPerPages);

@@ -1,8 +1,8 @@
-<div *ngIf="heroes">
+<div *ngIf="items">
   <div *ngIf="paginationLinks" class="c-pagination">
-    <button class="p-btn"  [disabled]="heroes.data.offset == 0" (click)="prevHeroes()">Prev</button>
-    <a class="p-link" *ngFor="let link of paginationLinks" [ngClass]="{'active': selectedItemId === link }"  routerLink="/hero-list/{{link*resultsPerPages}}" (click)="goHeroes(link*resultsPerPages, link+1); selectedItemId = link">{{link+1}}</a>
-    <button class="p-btn" [disabled]="heroes.data.count !== resultsPerPages" (click)="nextHeroes()">Next</button>
+    <button class="p-btn"  [disabled]="items.data.offset == 0" (click)="prevPage()">Prev</button>
+    <a class="p-link" *ngFor="let link of paginationLinks" [ngClass]="{'active': selectedItemId === link }"  routerLink="/hero-list/{{link*resultsPerPages}}" (click)="goPage(link*resultsPerPages, link+1); selectedItemId = link">{{link+1}}</a>
+    <button class="p-btn" [disabled]="items.data.count !== resultsPerPages" (click)="nextPage()">Next</button>
   </div>
 </div>
 

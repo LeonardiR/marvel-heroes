@@ -6,6 +6,6 @@
         <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
       </li>
     </ul>
-    <app-pagination (currentOffset)="getHeroesOffset($event)" (goNext)="nextHeroes(heroes.data.offset)" (goPrev)="prevHeroes(heroes.data.offset)" [heroes]="heroes" [resultsPerPages]="resultsPerPages"></app-pagination>
+    <app-pagination (currentOffset)="getHeroesOffset($event)" (goNext)="nextHeroes(heroes.data.offset)" (goPrev)="prevHeroes(heroes.data.offset)" [items]="heroes" [resultsPerPages]="resultsPerPages"></app-pagination>
   </div>
 </div>
