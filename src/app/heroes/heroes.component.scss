@@ -6,27 +6,32 @@
 
   .p-wrapper{
     text-align: center;
+
   }
 
   .heroes {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
+
+    @include t-mq($from:sm) {
+      width: 50%;
+    }
 
     li {
       position: relative;
       cursor: pointer;
-      background-color: white;
+      background-color: $config-color__neutral-white;
       margin: .5em;
       border-radius: 4px;
-      border: 1px solid lightgrey;
+      border: 1px solid $config-color__neutral-grey--03;
       padding: 16px;
-      color: black;
+      color: $config-color__neutral-black;
 
       a{
-        color: black;
+        color: $config-color__neutral-black;
         text-decoration: none;
         position: relative;
         display: block;
@@ -34,12 +39,12 @@
       }
 
       &:hover{
-        color: white;
-        background-color: $brand-color--primary;
+        color: $config-color__neutral-white;
+        background-color: $config-color__brand-primary;
         left: .1em;
 
         a{
-          color: white;
+          color: $config-color__neutral-white;
         }
       }
     }

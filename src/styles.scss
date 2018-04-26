@@ -1,10 +1,4 @@
-/* Fonts */
-
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-/* Colors */
-
-$brand-color--primary: #f0141e;
+@import 'scss/main';
 
 body{
   margin: 0;
@@ -19,16 +13,6 @@ a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-/* Utilities */
-
-.u-align-content--center{
-  text-align: center;
-}
-
-.u-highlight{
-  color: $brand-color--primary;
 }
 
 /* Patterns */
@@ -51,32 +35,40 @@ a {
   justify-content: space-around;
 
   .p-grid__item{
-    width: 31%;
     margin-bottom: 36px;
+    width: 100%;
+
+    @include t-mq($from: sm){
+      width: 47%;
+    }
+
+    @include t-mq($from: md){
+      width: 31%;
+    }
   }
 }
 
 .p-link{
-  color: white;
+  color: $config-color__neutral-white;
 
   &:hover{
-    color: red;
+    color: $config-color__brand-primary;
   }
 
 }
 
 .p-btn{
-  background-color: $brand-color--primary;
+  background-color: $config-color__brand-primary;
   padding: 15px 30px;
-  color: white;
+  color: $config-color__neutral-white;
   border-radius: unset;
   font-size: 16px;
-  border: 1px solid $brand-color--primary;
+  border: 1px solid $config-color__brand-primary;
 
   &:hover{
-    background-color: white;
-    color: black;
-    border: 1px solid lightgrey;
+    background-color: $config-color__neutral-white;
+    color: $config-color__neutral-black;
+    border: 1px solid $config-color__neutral-grey--03;
     cursor: pointer;
   }
 
@@ -89,10 +81,11 @@ a {
 
 .c-card{
   width:100%;
-  -webkit-box-shadow: 0 10px 6px -6px #777;
-  -moz-box-shadow: 0 10px 6px -6px #777;
-  box-shadow: 0 10px 6px -6px #777;
-  border: 1px solid lightgrey;
+  -webkit-box-shadow: 0 10px 6px -6px $config-color__neutral-grey--04;
+  -moz-box-shadow: 0 10px 6px -6px $config-color__neutral-grey--04;
+  box-shadow: 0 10px 6px -6px $config-color__neutral-grey--04;
+  border: 1px solid $config-color__neutral-grey--03;
+  margin-bottom: 30px !important;
 
   .c-card__header{
     width: 100%;

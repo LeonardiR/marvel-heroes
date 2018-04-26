@@ -7,14 +7,19 @@
   justify-content: space-around;
 
   .p-link{
-    color: black;
+    color: $config-color__neutral-black;
+    display: none;
+
+    @include t-mq($from: sm){
+      display: block;
+    }
 
     &:hover{
-      color: $brand-color--primary;
+      color: $config-color__brand-primary;
     }
 
     &.active{
-      color: $brand-color--primary;
+      color: $config-color__brand-primary;
     }
   }
 }

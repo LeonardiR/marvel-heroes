@@ -1,8 +1,14 @@
+@import "../../styles";
+
 .c-hero{
 
   .c-card{
-    width:340px;
+    width: 270px;
     position: relative;
     margin: 0 auto;
+
+    @include t-mq($from: sm){
+      width:340px;
+    }
   }
 }
