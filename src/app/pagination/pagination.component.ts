@@ -1,13 +1,14 @@
-import {Component, DoCheck, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 import {Hero} from '../hero';
+
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit, DoCheck {
+export class PaginationComponent implements OnInit {
 
   @Input() heroes: Hero;
   @Input() resultsPerPages: number;
@@ -17,14 +18,12 @@ export class PaginationComponent implements OnInit, DoCheck {
   paginationLinks = [];
   numberOfLinks: number;
   currentLink: number;
+  selectedItemId: number;
 
   constructor() {}
 
   ngOnInit() {
     this.generatePaginationLinks();
-    }
-
-  ngDoCheck() {
     }
 
   nextHeroes(): void {
@@ -40,11 +39,11 @@ export class PaginationComponent implements OnInit, DoCheck {
     this.currentLink = currentLink;
     this.paginationLinks = Array(this.numberOfLinks).fill(0).map((x, i) => i);
 
-    if (this.currentLink < this.paginationLinks.length - this.resultsPerPages && this.currentLink > this.resultsPerPages / 2) {
+    if (this.currentLink <= this.paginationLinks.length - this.resultsPerPages / 2 && this.currentLink > this.resultsPerPages / 2) {
       this.paginationLinks = this.paginationLinks.slice
       (this.currentLink - this.resultsPerPages / 2, this.currentLink + this.resultsPerPages / 2);
 
-    } else  if (this.currentLink >= this.paginationLinks.length - this.resultsPerPages ) {
+    } else  if (this.currentLink > this.paginationLinks.length - this.resultsPerPages / 2 ) {
       this.paginationLinks = this.paginationLinks.slice(this.paginationLinks.length - this.resultsPerPages, this.paginationLinks.length);
 
     } else {

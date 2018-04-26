@@ -12,5 +12,9 @@
     &:hover{
       color: $brand-color--primary;
     }
+
+    &.active{
+      color: $brand-color--primary;
+    }
   }
 }
