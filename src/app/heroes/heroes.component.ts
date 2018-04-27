@@ -5,6 +5,7 @@ import {Hero} from '../hero';
 import { HeroService } from '../hero.service';
 
 
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -12,6 +13,7 @@ import { HeroService } from '../hero.service';
 })
 
 export class HeroesComponent implements OnInit {
+  p = 1;
   heroes: Hero;
   modifiedSince = '';
   resultsPerPages = 20;
