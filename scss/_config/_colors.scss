@@ -1,0 +1,24 @@
+// Black & White
+
+$config-color__neutral-white:                #fff !default;
+$config-color__neutral-black:                #222222 !default;
+
+// Grey shades (Mid tones are missing intentionally)
+
+$config-color__neutral-grey--01:             #F0F0F0 !default;
+$config-color__neutral-grey--02:             #DDDDDD !default;
+$config-color__neutral-grey--03:             #BCBCBC !default;
+$config-color__neutral-grey--04:             #5D5D5D !default;
+$config-color__neutral-grey--05:             #404040 !default;
+$config-color__neutral-grey--06:             #333333 !default;
+
+
+// Transparent colors
+
+$config-color__neutral-white--transparent:   rgba($config-color__neutral-white, .7) !default;
+$config-color__neutral-black--transparent:   rgba($config-color__neutral-black, .7) !default;
+
+// Main brand colors
+
+$config-color__brand-primary:                  #f0141e !default;
+$config-color__brand-secondary:                #1a3980 !default;

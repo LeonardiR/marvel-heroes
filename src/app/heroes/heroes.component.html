@@ -2,20 +2,11 @@
   <div class="p-wrapper">
     <h2>Hero List with a total of: <span class="u-highlight">{{heroes.data.total}} results and offset {{heroes.data.offset}}</span></h2>
     <ul class="heroes">
-      <li *ngFor="let hero of heroes.data.results | paginate: {
-                                                      itemsPerPage: resultsPerPages,
-                                                      currentPage: p,
-                                                      totalItems: heroes.data.total }">
+      <li *ngFor="let hero of heroes.data.results">
         <a routerLink="/hero/{{hero.id}}">{{hero.name}}</a>
       </li>
     </ul>
-    <pagination-controls (pageChange)="getHeroesOffset($event)"
-                         previousLabel="Previous"
-                         nextLabel="Next"
-                         screenReaderPaginationLabel="Pagination"
-                         screenReaderPageLabel="page"
-                         screenReaderCurrentLabel="You're on page"></pagination-controls>
-    <!--<app-pagination (currentOffset)="getHeroesOffset($event)" (goNext)="nextHeroes(heroes.data.offset)" (goPrev)="prevHeroes(heroes.data.offset)" [items]="heroes" [resultsPerPages]="resultsPerPages"></app-pagination>-->
+    <app-pagination (currentOffset)="getHeroesOffset($event)" (goNext)="nextHeroes(heroes.data.offset)" (goPrev)="prevHeroes(heroes.data.offset)" [items]="heroes" [resultsPerPages]="resultsPerPages"></app-pagination>
   </div>
 </div>
 

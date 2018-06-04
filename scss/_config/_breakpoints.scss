@@ -1,0 +1,18 @@
+// Main breakpoints
+
+$config-breakpoint--xs:         1px !default;
+$config-breakpoint--sm:        600px !default;
+$config-breakpoint--md:        769px !default;
+$config-breakpoint--lg:        1025px !default;
+$config-breakpoint--xl:        1367px !default;
+
+
+// Breakpoints map
+
+$config-breakpoints: (
+        "xs":                     $config-breakpoint--xs,
+        "sm":                     $config-breakpoint--sm,
+        "md":                     $config-breakpoint--md,
+        "lg":                     $config-breakpoint--lg,
+        "xl":                     $config-breakpoint--xl,
+) !default;

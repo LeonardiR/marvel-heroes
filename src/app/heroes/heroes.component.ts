@@ -34,8 +34,9 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroesOffset(offset: number): void {
-    this.p = offset;
-    }
+    this.heroService.getHeroes(offset, this.modifiedSince)
+    .subscribe(heroes => this.heroes = heroes);
+     }
 
   nextHeroes(offset: number): void {
     this.heroes.data.offset = offset + this.resultsPerPages;
